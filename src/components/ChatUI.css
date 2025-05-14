@@ -1,0 +1,102 @@
+/* Custom styles for ChatUI component */
+
+/* Override default ChatUI styles to match our design */
+.ChatApp {
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ChatApp .Navbar {
+    background-color: #1976d2;
+    color: white;
+}
+
+.ChatApp .Navbar-title {
+    font-weight: bold;
+}
+
+.ChatApp .Message.Message--fromMe .Bubble {
+    background-color: #1976d2;
+    color: white;
+}
+
+.ChatApp .Message:not(.Message--fromMe) .Bubble {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Custom styles for feedback buttons */
+.feedback-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+    justify-content: flex-end;
+}
+
+/* Float button */
+.chat-trigger-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #1976d2;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.chat-trigger-button:hover {
+    transform: scale(1.05);
+}
+
+.chat-trigger-button .icon {
+    transition: transform 0.3s;
+}
+
+/* Chat container */
+.chat-container {
+    position: fixed;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+/* File upload button styling */
+.ChatFooter .Toolbar-item button {
+    color: #666;
+}
+
+.ChatFooter .Toolbar-item button:hover {
+    color: #1976d2;
+}
+
+/* Customize file message */
+.file-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-message .file-icon {
+    color: #666;
+}
+
+body:not(.using-mouse) :focus {
+    outline: none !important;
+}
