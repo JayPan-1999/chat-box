@@ -31,7 +31,7 @@ export interface DdaiChatBoxProps {
 export const DdaiChatBox = ({
   message,
   contentLanguage,
-  show_trigger_button,
+  show_trigger_button = true,
   initial_visible = false,
   title = "Chat11",
   placeholder = "Type your message here...",
