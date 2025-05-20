@@ -25,13 +25,13 @@ export const configurationSchema: JSONSchema7 = {
       title: "Message",
       description: "This text will be used as fallback for the chat title",
     },
-    showTriggerButton: {
+    show_trigger_button: {
       type: "boolean",
       title: "Show Trigger Button",
       description: "Show a button to open/close the chat",
-      default: true,
+      default: false,
     },
-    initialVisible: {
+    initial_visible: {
       type: "boolean",
       title: "Initially Visible",
       description: "Show the chat box when the page loads",
@@ -48,7 +48,7 @@ export const configurationSchema: JSONSchema7 = {
       description: "Placeholder text for the chat input field",
       default: "Type your message here...",
     },
-    welcomeMessage: {
+    welcome_message: {
       type: "string",
       title: "Welcome Message",
       description: "Initial message displayed in the chat",
@@ -65,10 +65,10 @@ export const uiSchema: UiSchema = {
   message: {
     "ui:help": "Please enter a message to show",
   },
-  showTriggerButton: {
+  show_trigger_button: {
     "ui:widget": "checkbox",
   },
-  initialVisible: {
+  initial_visible: {
     "ui:widget": "checkbox",
   },
   title: {
@@ -77,7 +77,7 @@ export const uiSchema: UiSchema = {
   placeholder: {
     "ui:help": "Text shown in the input field when empty",
   },
-  welcomeMessage: {
+  welcome_message: {
     "ui:help": "First message shown in the chat from the system",
   },
 };

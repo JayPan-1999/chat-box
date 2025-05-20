@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { BlockAttributes } from "widget-sdk";
 import ChatUI from "./components/ChatUI";
 
@@ -20,22 +20,35 @@ import ChatUI from "./components/ChatUI";
  */
 export interface DdaiChatBoxProps {
   message: string;
-  showTriggerButton?: boolean;
-  initialVisible?: boolean;
+  contentLanguage?: string;
+  show_trigger_button?: boolean;
+  initial_visible?: boolean;
   title?: string;
   placeholder?: string;
-  welcomeMessage?: string;
+  welcome_message?: string;
 }
 
 export const DdaiChatBox = ({
   message,
   contentLanguage,
-  showTriggerButton = true,
-  initialVisible = false,
-  title = "Chat",
+  show_trigger_button,
+  initial_visible = false,
+  title = "Chat11",
   placeholder = "Type your message here...",
-  welcomeMessage = "Hello! How can I help you today?",
+  welcome_message = "Hello! How can I help you today?",
 }: DdaiChatBoxProps): ReactElement => {
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '//g.alicdn.com/chatui/icons/2.6.2/index.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.removeChild(script)
+    }
+  }, [])
+
+
   const handleSendMessage = (msg: string) => {
     console.log("Message sent:", msg);
     // Here you would typically send the message to your API
@@ -53,11 +66,11 @@ export const DdaiChatBox = ({
 
   return (
     <ChatUI
-      initialVisible={initialVisible}
-      showTriggerButton={showTriggerButton}
+      initial_visible={initial_visible}
+      show_trigger_button={show_trigger_button}
       title={title || message}
       placeholder={placeholder}
-      welcomeMessage={welcomeMessage}
+      welcome_message={welcome_message}
       onSendMessage={handleSendMessage}
       onFileUpload={handleFileUpload}
       onFeedback={handleFeedback}

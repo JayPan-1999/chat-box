@@ -28,14 +28,14 @@ Once installed and deployed, you can add the chat box to your page using the Sta
 
 ## Configuration Options
 
-| Property          | Type    | Default                            | Description                                      |
-| ----------------- | ------- | ---------------------------------- | ------------------------------------------------ |
-| message           | string  | -                                  | This will be used as fallback for the chat title |
-| showTriggerButton | boolean | true                               | Show a button to open/close the chat             |
-| initialVisible    | boolean | false                              | Show the chat box when the page loads            |
-| title             | string  | "Chat"                             | Title displayed at the top of the chat box       |
-| placeholder       | string  | "Type your message here..."        | Placeholder text for the chat input field        |
-| welcomeMessage    | string  | "Hello! How can I help you today?" | Initial message displayed in the chat            |
+| Property            | Type    | Default                            | Description                                      |
+| ------------------- | ------- | ---------------------------------- | ------------------------------------------------ |
+| message             | string  | -                                  | This will be used as fallback for the chat title |
+| show_trigger_button | boolean | true                               | Show a button to open/close the chat             |
+| initial_visible     | boolean | false                              | Show the chat box when the page loads            |
+| title               | string  | "Chat"                             | Title displayed at the top of the chat box       |
+| placeholder         | string  | "Type your message here..."        | Placeholder text for the chat input field        |
+| welcome_message     | string  | "Hello! How can I help you today?" | Initial message displayed in the chat            |
 
 ## Customization
 

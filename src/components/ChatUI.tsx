@@ -1,42 +1,44 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Chat, { Bubble, IconButtonProps, ToolbarItemProps, useMessages } from '@chatui/core';
+import useIsMobile from '../hooks/use-mobile'
 import '@chatui/core/dist/index.css';
 import { ThumbUp, ThumbDown, KeyboardArrowUp, AttachFile } from '@mui/icons-material';
 import './ChatUI.css';
 
 // Props for our ChatUI component
 export interface ChatUIProps {
-    initialVisible?: boolean;
-    showTriggerButton?: boolean;
+    initial_visible?: boolean;
+    show_trigger_button?: boolean;
     title?: string;
     placeholder?: string;
-    welcomeMessage?: string;
+    welcome_message?: string;
     onSendMessage?: (message: string) => void;
     onFileUpload?: (file: File) => void;
     onFeedback?: (messageId: string, feedback: 'like' | 'dislike') => void;
 }
 
 export const ChatUI: React.FC<ChatUIProps> = ({
-    initialVisible = false,
-    showTriggerButton = true,
+    initial_visible = false,
+    show_trigger_button,
     title = 'Chat',
     placeholder = 'Please enter your message...',
-    welcomeMessage = 'Hello! How can I help you today?',
+    welcome_message = 'Hello! How can I help you today?',
     onSendMessage,
     onFileUpload,
     onFeedback,
 }) => {
-    const [visible, setVisible] = useState(initialVisible);
+    const [visible, setVisible] = useState(initial_visible);
     const { messages, appendMsg, updateMsg } = useMessages([]);
     const [isTyping, setTyping] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const isMobile = useIsMobile();
 
     // Add welcome message when component mounts
     useEffect(() => {
-        if (messages.length === 0 && welcomeMessage) {
+        if (messages.length === 0 && welcome_message) {
             appendMsg({
                 type: 'text',
-                content: { text: welcomeMessage },
+                content: { text: welcome_message },
                 position: 'left',
             });
         }
@@ -181,7 +183,7 @@ export const ChatUI: React.FC<ChatUIProps> = ({
 
     return (
         <div>
-            {showTriggerButton && (
+            {show_trigger_button && (
                 <button
                     onClick={() => setVisible(!visible)}
                     className="chat-trigger-button"
@@ -196,14 +198,23 @@ export const ChatUI: React.FC<ChatUIProps> = ({
             )}
 
             <div
-                className="chat-container"
+                className={isMobile ? "chat-mobile-container" : "chat-container"}
                 style={{
-                    bottom: showTriggerButton ? '90px' : '0',
-                    display: visible ? 'block' : 'none',
+                    bottom: show_trigger_button ? '90px' : '0',
+                    display: (visible || !show_trigger_button) ? 'block' : 'none',
                 }}
             >
                 <Chat
-                    navbar={{ title }}
+                    navbar={{
+                        title, rightContent: show_trigger_button ? [
+                            {
+                                icon: 'minus',
+                                onClick: () => {
+                                    setVisible(false)
+                                }
+                            }
+                        ] : []
+                    }}
                     messages={messages}
                     renderMessageContent={renderMessageContent}
                     onSend={handleSend}

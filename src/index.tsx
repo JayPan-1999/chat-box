@@ -25,11 +25,11 @@ import pkg from '../package.json'
  */
 const widgetAttributes: string[] = [
   'message',
-  'showTriggerButton',
-  'initialVisible',
+  'show_trigger_button',
+  'initial_visible',
   'title',
   'placeholder',
-  'welcomeMessage',
+  'welcome_message',
 ];
 
 /**
